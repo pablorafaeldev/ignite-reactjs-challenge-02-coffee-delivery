@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const ContainerCoffeeMenu = styled.div`
   position: relative;
   background: ${(props) => props.theme['--base-card']};
-  max-width: 16rem;
   padding-inline: 1.25rem;
   padding-bottom: 1.25rem;
   border-radius: 0.375rem 2.25rem;
@@ -35,17 +34,17 @@ export const ContainerContentCoffeeMenu = styled.div`
     font-size: 10px;
   }
 
-  & h2 {
-    font-size: var(--fs-title-s);
-    font-family: var(--ff-sans-baloo);
-    color: ${(props) => props.theme['--base-subtitle']};
-  }
-
   > p {
     font-size: var(--fs-text-s);
     color: ${(props) => props.theme['--base-label']};
   }
 `;
+
+export const CoffeeTitle = styled.h2`
+  font-size: var(--fs-title-s);
+  font-family: var(--ff-sans-baloo);
+  color: ${(props) => props.theme['--base-subtitle']};
+`
 
 export const ContainerPriceCoffeeMenu = styled.div`
   display: flex;

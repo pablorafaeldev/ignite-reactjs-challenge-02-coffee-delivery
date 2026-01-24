@@ -1,5 +1,6 @@
 import {
   CartNavigationButton,
+  CoffeeTitle,
   ContainerCoffeeMenu,
   ContainerContentCoffeeMenu,
   ContainerPriceCoffeeMenu,
@@ -44,10 +45,19 @@ export function Catalog({ coffee }: Coffee) {
   return (
     <ContainerCoffeeMenu>
       <img src={coffee.image} alt="" />
+
       <ContainerContentCoffeeMenu>
-        <header>{coffee.type}</header>
-        <h2>{coffee.title}</h2>
-        <p>{coffee.text}</p>
+        <header>
+          {coffee.type}
+        </header>
+
+        <CoffeeTitle>
+          {coffee.title}
+        </CoffeeTitle>
+
+        <p>
+          {coffee.text}
+        </p>
         <ContainerPriceCoffeeMenu>
           <p>
             R$ <span>{coffee.price}</span>
@@ -61,6 +71,7 @@ export function Catalog({ coffee }: Coffee) {
             <CartNavigationButton onClick={handleCreateNewCoffee}>
               <ShoppingCartSimple size={22} weight="fill" />
             </CartNavigationButton>
+      
           </div>
         </ContainerPriceCoffeeMenu>
       </ContainerContentCoffeeMenu>

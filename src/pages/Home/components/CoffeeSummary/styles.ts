@@ -13,7 +13,7 @@ const setVariant = {
   purple: '--purple',
 } as const;
 
-export const HomePurchaseBenefits = styled.div<PropsColor>`
+export const CoffeeSummaryContainer = styled.div<PropsColor>`
   display: flex;
   align-items: center;
   gap: 0.75rem;

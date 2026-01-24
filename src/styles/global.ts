@@ -25,4 +25,11 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     font-family: var(--ff-sans-roboto);
   }
+
+  h1 {
+    font-family: 'Baloo 2', sans-serif;
+    font-size: var(--fs-title-xl);
+    line-height: 130%;
+    color: ${(props) => props.theme['--base-title']};
+  }
 `;

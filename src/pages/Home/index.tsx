@@ -1,34 +1,30 @@
-import {
-  ShoppingCart,
-  Package,
-  Timer,
-  Coffee,
-  type IconProps,
-} from '@phosphor-icons/react';
+import { ShoppingCart, Package, Timer, Coffee, type IconProps } from '@phosphor-icons/react';
+
+import { coffees } from '../../../data.json';
+import { CoffeeSummary } from '@/pages/Home/components/CoffeeSummary';
+import type { ColorVariant } from '@/pages/Home/components/CoffeeSummary/styles';
+import { Catalog } from './components/Catalog';
+
+import glassImage from '@/assets/Imagem.svg';
 
 import {
-  CoffeeMenuContainer,
-  CoffeeMenuGrid,
-  ContainerPurchaseBenefits,
-  HomeContent,
-  HomeContextText,
-  HomeSection,
+  CatalogSubtitle,
+  CoffeeGrid,
+  CoffeeListContainer,
+  CoffeeSummaryContainer,
+  HomeContainer,
+  HomeDetails,
+  HomeFeature,
 } from './styles';
 
-import type { ColorVariant } from '../../components/PurchaseBenefits/styles';
-import { PurchaseBenefits } from '../../components/PurchaseBenefits';
-import glassImage from '../../assets/Imagem.svg';
-import { Catalog } from '../Home/components/Catalog';
-import { coffees } from '../../../data.json';
-
-interface BenefitsType {
+interface CoffeeSummary {
   id: number;
   text: string;
   variant: ColorVariant;
   Icon: React.ComponentType<IconProps>;
 }
 
-const purchaseBenefitsData: BenefitsType[] = [
+const coffeeSummary: CoffeeSummary[] = [
   {
     id: 1,
     text: 'Compra simples e segura',
@@ -57,39 +53,41 @@ const purchaseBenefitsData: BenefitsType[] = [
 
 export function Home() {
   return (
-    <main>
-      <HomeSection>
-        <HomeContent>
-          <HomeContextText>
+    <HomeContainer>
+      <HomeFeature>
+        <div>
+          <HomeDetails>
             <h1>Encontre o café perfeito para qualquer hora do dia</h1>
-            <p>
-              Com o Coffee Delivery você recebe seu café onde estiver, a
-              qualquer hora
-            </p>
-          </HomeContextText>
-          <ContainerPurchaseBenefits>
-            {purchaseBenefitsData.map((benefit) => {
-              return (
-                <PurchaseBenefits
-                  key={benefit.id}
-                  text={benefit.text}
-                  Icon={benefit.Icon}
-                  variant={benefit.variant}
+            <p>Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora</p>
+          </HomeDetails>
+          
+          <CoffeeSummaryContainer>
+            {
+              coffeeSummary.map((summary) => 
+                <CoffeeSummary
+                  key={summary.id}
+                  text={summary.text}
+                  Icon={summary.Icon}
+                  variant={summary.variant}
                 />
-              );
-            })}
-          </ContainerPurchaseBenefits>
-        </HomeContent>
-        <img src={glassImage} alt="" />
-      </HomeSection>
-      <CoffeeMenuContainer>
-        <h2>Nossos Cafés</h2>
-        <CoffeeMenuGrid>
-          {coffees.map((coffee) => {
-            return <Catalog key={coffee.id} coffee={coffee} />;
-          })}
-        </CoffeeMenuGrid>
-      </CoffeeMenuContainer>
-    </main>
+              )}
+          </CoffeeSummaryContainer>
+        </div>
+        
+        <img src={glassImage} alt="Copo de café do Coffee Delivery"/>
+      </HomeFeature>
+
+      <CoffeeListContainer>
+        <CatalogSubtitle>Nossos Cafés</CatalogSubtitle>
+
+        <CoffeeGrid>
+          {
+            coffees.map((coffee) =>
+              <Catalog key={coffee.id} coffee={coffee}/>
+            )
+          }
+        </CoffeeGrid>
+      </CoffeeListContainer>
+    </HomeContainer>
   );
 }

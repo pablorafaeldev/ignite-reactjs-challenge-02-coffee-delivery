@@ -44,7 +44,7 @@ export function Catalog({ coffee }: Coffee) {
 
   return (
     <ContainerCoffeeMenu>
-      <img src={coffee.image} alt="" />
+      <img src={ coffee.image } alt="" />
 
       <ContainerContentCoffeeMenu>
         <header>

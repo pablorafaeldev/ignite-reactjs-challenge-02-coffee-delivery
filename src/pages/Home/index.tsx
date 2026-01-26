@@ -1,8 +1,7 @@
-import { ShoppingCart, Package, Timer, Coffee, type IconProps } from '@phosphor-icons/react';
+import { ShoppingCart, Package, Timer, Coffee } from '@phosphor-icons/react';
 
 import { coffees } from '../../../data.json';
 import { CoffeeSummary } from '@/pages/Home/components/CoffeeSummary';
-import type { ColorVariant } from '@/pages/Home/components/CoffeeSummary/styles';
 import { Catalog } from './components/Catalog';
 
 import glassImage from '@/assets/Imagem.svg';
@@ -17,14 +16,7 @@ import {
   HomeFeature,
 } from './styles';
 
-interface CoffeeSummary {
-  id: number;
-  text: string;
-  variant: ColorVariant;
-  Icon: React.ComponentType<IconProps>;
-}
-
-const coffeeSummary: CoffeeSummary[] = [
+const coffeeSummary = [
   {
     id: 1,
     text: 'Compra simples e segura',
@@ -49,7 +41,7 @@ const coffeeSummary: CoffeeSummary[] = [
     variant: 'purple',
     Icon: Coffee,
   },
-];
+] as const
 
 export function Home() {
   return (

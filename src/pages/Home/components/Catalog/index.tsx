@@ -10,19 +10,20 @@ import { ShoppingCartSimple } from '@phosphor-icons/react';
 import { CoffeQuantity } from '../../../../components/CoffeeQuantity';
 import { useContext, useState } from 'react';
 import { CoffeeContext } from '../../../../contexts/CoffeeContext';
+import currencyFormatter from '@/utils/currencyformatter';
 
-interface Coffee {
+interface CatalogProps {
   coffee: {
     id: number;
     type: string;
     title: string;
-    text: string;
+    description: string;
     price: number;
     image: string;
-  };
+  }
 }
 
-export function Catalog({ coffee }: Coffee) {
+export function Catalog({ coffee } : CatalogProps) {
   const { createNewCoffeeOrder } = useContext(CoffeeContext);
   const [quantity, setQuantity] = useState<number>(1);
 
@@ -56,11 +57,11 @@ export function Catalog({ coffee }: Coffee) {
         </CoffeeTitle>
 
         <p>
-          {coffee.text}
+          {coffee.description}
         </p>
         <ContainerPriceCoffeeMenu>
           <p>
-            R$ <span>{coffee.price}</span>
+            R$ <span>{currencyFormatter(coffee.price)}</span>
           </p>
           <div>
             <CoffeQuantity

@@ -1,5 +1,5 @@
 import type { IconProps } from '@phosphor-icons/react';
-import { CoffeeSummaryContainer,type ColorVariant } from './styles';
+import { CoffeeSummaryContainer, ColorVariant } from './styles';
 
 interface CoffeeSummaryProps {
   text: string;
@@ -13,6 +13,7 @@ export function CoffeeSummary({ text, Icon, variant }: CoffeeSummaryProps) {
       <div>
         <Icon weight="fill" />
       </div>
+      
       <p>{text}</p>
     </CoffeeSummaryContainer>
   );

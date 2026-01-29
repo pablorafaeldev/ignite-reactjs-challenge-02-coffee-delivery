@@ -8,47 +8,34 @@ export const CartContainer = styled.main`
   margin-top: 2.5rem;
   border: solid 1px black;
 
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 40rem;
+  }
+
   h2 {
     font-family: var(--ff-sans-baloo);
     font-size: var(--fs-title-xs);
   }
 `;
 
-export const CartContent = styled.section`
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  max-width: 40rem;
-`;
-
-const StyleBaseSection = styled.section`
+export const AddressContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
   background: ${(props) => props.theme['--base-card']};
   padding: 2.5rem;
   border-radius: 0.375rem;
-`;
+`
 
-export const FormContainer = styled(StyleBaseSection)`
-  margin-top: 1rem;
-
-  > div {
-    display: flex;
-    gap: 0.5rem;
-
-    & svg {
-      color: ${(props) => props.theme['--yellow-dark']};
-      width: 22px;
-      height: 22px;
-    }
-  }
-
-  form {
-    display: flex;
-    flex-direction: column;
+export const PayMethodContainer = styled(AddressContainer)`
+  svg {
+    color: ${(props) => props.theme['--purple']};
   }
 `;
+
 
 const StylesBaseDetails = styled.div`
   display: flex;
@@ -65,6 +52,19 @@ const StylesBaseDetails = styled.div`
     color: ${(props) => props.theme['--base-text']};
   }
 `;
+
+export const AddressHeading = styled.div`
+  display: flex;
+  gap: 0.5rem;
+
+  div {
+    
+  }
+
+  svg {
+    color: ${(props) => props.theme['--yellow-dark']} ;
+  }
+`
 
 export const AddressDetails = styled(StylesBaseDetails)``;
 
@@ -83,12 +83,6 @@ export const AddressForm = styled.div`
 export const PayDetailsContainer = styled.div`
   display: flex;
   gap: 0.5rem;
-`;
-
-export const PayMethodContainer = styled(StyleBaseSection)`
-  & svg {
-    color: ${(props) => props.theme['--purple']};
-  }
 `;
 
 export const PaymentOptions = styled.div`

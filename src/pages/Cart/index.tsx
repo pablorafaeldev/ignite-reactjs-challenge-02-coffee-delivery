@@ -14,8 +14,6 @@ import {
   AsideContainer,
   ButtonOrderConfirm,
   CartContainer,
-  CartContent,
-  FormContainer,
   OrderSummary,
   PayDetails,
   PayDetailsContainer,
@@ -29,6 +27,8 @@ import {
   RemoveItemButton,
   PaymentOptions,
   AddressForm,
+  AddressContainer,
+  AddressHeading,
 } from './styles';
 
 import { Radio } from './components/Form/Radio';
@@ -120,17 +120,20 @@ export function Cart() {
 
   return (
     <CartContainer>
-      <CartContent>
+      <section>
         <h2>Complete seu pedido</h2>
-        <FormContainer>
-          <div>
-            <MapPinLine />
-            <AddressDetails>
-              <p>Endereço de Entrega</p>
-              <p>Informe o endereço onde deseja receber seu pedido</p>
-            </AddressDetails>
-          </div>
-          <form id="order" onSubmit={handleSubmit(handleOrderCheckout)}>
+
+        <form id="order" onSubmit={handleSubmit(handleOrderCheckout)}>
+          <AddressContainer>
+            <AddressHeading>
+              <MapPinLine size={22} />
+
+              <AddressDetails>
+                <p>Endereço de Entrega</p>
+                <p>Informe o endereço onde deseja receber seu pedido</p>
+              </AddressDetails>
+            </AddressHeading>
+
             <AddressForm>
               <TextInput
                 placeholder="CEP"
@@ -143,7 +146,7 @@ export function Cart() {
                 error={errors.street}
                 {...register('street')}
                 containerPropsStyle={{ style: { gridArea: 'street' } }}
-              />
+                />
               <TextInput
                 placeholder="Complemento"
                 error={errors.complement}
@@ -155,13 +158,13 @@ export function Cart() {
                 error={errors.city}
                 {...register('city')}
                 containerPropsStyle={{ style: { gridArea: 'city' } }}
-              />
+                />
               <TextInput
                 placeholder="Bairro"
                 error={errors.neighborhood}
                 {...register('neighborhood')}
                 containerPropsStyle={{ style: { gridArea: 'neighborhood' } }}
-              />
+                />
               <TextInput
                 placeholder="Número"
                 error={errors.number}
@@ -173,48 +176,51 @@ export function Cart() {
                 error={errors.uf}
                 {...register('uf')}
                 containerPropsStyle={{ style: { gridArea: 'uf' } }}
-              />
+                />
             </AddressForm>
-          </form>
-        </FormContainer>
-        <PayMethodContainer>
-          <PayDetailsContainer>
-            <CurrencyDollar size={22} />
-            <PayDetails>
-              <p>Pagamento</p>
-              <p>
-                O pagamento é feito na entrega. Escolha a forma que deseja pagar
-              </p>
-            </PayDetails>
-          </PayDetailsContainer>
-          <PaymentOptions>
-            <Radio
-              isSelected={isPaymentMethod === 'credit'}
-              {...register('pagamentMethod')}
-              value="credit"
-            >
-              <CreditCard size={16} />
-              <span>Cartão de crédito</span>
-            </Radio>
-            <Radio
-              isSelected={isPaymentMethod === 'debit'}
-              {...register('pagamentMethod')}
-              value="debit"
-            >
-              <Bank size={16} />
-              <span>Cartão de débito</span>
-            </Radio>
-            <Radio
-              isSelected={isPaymentMethod === 'cash'}
-              {...register('pagamentMethod')}
-              value="cash"
-            >
-              <Money size={16} />
-              <span>Dinheiro</span>
-            </Radio>
-          </PaymentOptions>
+          </AddressContainer>
+
+          <PayMethodContainer>
+            <PayDetailsContainer>
+              <CurrencyDollar size={22} />
+              <PayDetails>
+                <p>Pagamento</p>
+                <p>
+                  O pagamento é feito na entrega. Escolha a forma que deseja pagar
+                </p>
+              </PayDetails>
+            </PayDetailsContainer>
+            <PaymentOptions>
+              <Radio
+                isSelected={isPaymentMethod === 'credit'}
+                {...register('pagamentMethod')}
+                value="credit"
+              >
+                <CreditCard size={16} />
+                <span>Cartão de crédito</span>
+              </Radio>
+
+              <Radio
+                isSelected={isPaymentMethod === 'debit'}
+                {...register('pagamentMethod')}
+                value="debit"
+              >
+                <Bank size={16} />
+                <span>Cartão de débito</span>
+              </Radio>
+
+              <Radio
+                isSelected={isPaymentMethod === 'cash'}
+                {...register('pagamentMethod')}
+                value="cash"
+              >
+                <Money size={16} />
+                <span>Dinheiro</span>
+              </Radio>
+            </PaymentOptions>
         </PayMethodContainer>
-      </CartContent>
+        </form>
+      </section>
       <AsideContainer>
         <h2>Cafés selecionados</h2>
         <section>

@@ -1,6 +1,7 @@
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as zod from 'zod';
+
 import {
   CurrencyDollar,
   MapPinLine,
@@ -9,6 +10,7 @@ import {
   CreditCard,
   Money,
 } from '@phosphor-icons/react';
+
 import {
   AddressDetails,
   AsideContainer,
@@ -29,6 +31,7 @@ import {
   AddressForm,
   AddressContainer,
   AddressHeading,
+  CartForm,
 } from './styles';
 
 import { Radio } from './components/Form/Radio';
@@ -123,7 +126,7 @@ export function Cart() {
       <section>
         <h2>Complete seu pedido</h2>
 
-        <form id="order" onSubmit={handleSubmit(handleOrderCheckout)}>
+        <CartForm id="order" onSubmit={handleSubmit(handleOrderCheckout)}>
           <AddressContainer>
             <AddressHeading>
               <MapPinLine size={22} />
@@ -219,10 +222,12 @@ export function Cart() {
               </Radio>
             </PaymentOptions>
         </PayMethodContainer>
-        </form>
+        </CartForm>
       </section>
+
       <AsideContainer>
         <h2>Cafés selecionados</h2>
+
         <section>
           {cartInCoffee.map((coffee) => {
             return (

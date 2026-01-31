@@ -3,23 +3,23 @@ import styled from 'styled-components';
 export const CartContainer = styled.main`
   display: flex;
   gap: 2rem;
-  width: min(90rem, 100% - 2 * 10rem);
+  width: 1120px;
   margin-inline: auto;
   margin-top: 2.5rem;
-  border: solid 1px black;
-
-  section {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    max-width: 40rem;
-  }
 
   h2 {
     font-family: var(--ff-sans-baloo);
     font-size: var(--fs-title-xs);
+    margin-bottom: 1rem;
   }
 `;
+
+export const CartForm = styled.form`
+  width: 40rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+`
 
 export const AddressContainer = styled.div`
   display: flex;
@@ -95,7 +95,6 @@ export const PayDetails = styled(StylesBaseDetails)``;
 export const AsideContainer = styled.aside`
   display: flex;
   flex-direction: column;
-  gap: 3rem;
 
   section {
     display: flex;
@@ -103,6 +102,7 @@ export const AsideContainer = styled.aside`
     background: ${(props) => props.theme['--base-card']};
     padding: 2.5rem;
     border-radius: 0.375rem 2.75rem;
+    width: 28rem;
   }
 `;
 
@@ -134,11 +134,16 @@ export const ButtonOrderConfirm = styled.button`
   border-radius: 6px;
   border: none;
   background: ${(props) => props.theme['--yellow']};
-  color: ${(props) => props.theme['--white']};
-
   text-transform: uppercase;
   font-size: 0.875rem;
   cursor: pointer;
+  margin-top: 1.5rem;
+
+  a {
+    text-decoration: none;
+    color: ${(props) => props.theme['--white']};
+    font-weight: 700;
+  }
 
   &:hover {
     background: ${(props) => props.theme['--yellow-dark']};

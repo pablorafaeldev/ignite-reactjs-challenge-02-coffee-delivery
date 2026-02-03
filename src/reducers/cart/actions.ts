@@ -1,5 +1,5 @@
 import type { NavigateFunction } from 'react-router-dom';
-import type { NewOrderFormData } from '../../pages/Cart';
+import type { NewOrderFormData } from '@/pages/Cart/components/Form';
 import { Item } from './reducer';
 export enum ActionTypes {
   ADD_NEW_COFFEE_CART = 'ADD_NEW_COFFEE_CART',

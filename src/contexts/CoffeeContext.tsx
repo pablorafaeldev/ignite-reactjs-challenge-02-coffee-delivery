@@ -7,7 +7,7 @@ import {
   newOrderDataAction,
   removeCoffeeCartAction,
 } from '../reducers/cart/actions';
-import type { NewOrderFormData } from '../pages/Cart';
+import { NewOrderFormData } from '@/pages/Cart/components/Form';
 import { useNavigate } from 'react-router-dom';
 
 interface CoffeeContextType {

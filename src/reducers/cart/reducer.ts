@@ -1,4 +1,4 @@
-import type { NewOrderFormData } from '../../pages/Cart';
+import type { NewOrderFormData } from '@/pages/Cart/components/Form';
 import { ActionTypes } from './actions';
 
 export interface Item {

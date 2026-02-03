@@ -14,7 +14,7 @@ import {
   RemoveItemButton,
 } from './styles';
 
-import { coffees } from '@/../data.json';
+import { coffees } from '../../../../../data.json';
 
 import { Item } from '@/reducers/cart/reducer';
 import { CoffeQuantity } from '@/components/CoffeeQuantity';

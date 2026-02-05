@@ -1,27 +1,14 @@
 import { useContext } from 'react';
 import { CoffeeContext } from '@/contexts/CoffeeContext';
 
-import {
-  AsideContainer,
-  ButtonOrderConfirm,
-  OrderSummary,
-  Separator,
-  AddOrRemoveItemsCart,
-  CoffeeDetails,
-  ItemContainer,
-  ItemContent,
-  ItemDetails,
-  RemoveItemButton,
-} from './styles';
+import { AsideContainer, ButtonOrderConfirm, OrderSummary } from './styles';
 
 import { coffees } from '../../../../../data.json';
 
 import { Item } from '@/reducers/cart/reducer';
-import { CoffeQuantity } from '@/components/CoffeeQuantity';
-import { Trash } from '@phosphor-icons/react';
+import { CartList } from './CartList';
 
 export function CartOrder() {
-    
   const {
     cart,
     increaseQuantityItemInCart,
@@ -58,46 +45,22 @@ export function CartOrder() {
     decreaseQuantityItemInCart(itemId);
   }
 
-  function handleRemoveCoffeeCart(itemId: Item['id']) {
+  function handleRemoveCoffee(itemId: Item['id']) {
     removeCoffeeCart(itemId);
   }
 
   return (
      <AsideContainer>
       <h2>Cafés Selecionados</h2>
-
       <section>
         {cartInCoffee.map((coffee) => {
           return (
-            <ItemContainer key={coffee.id}>
-              <ItemContent>
-                <ItemDetails>
-                  <img src={coffee.image} alt="" />
-                  <CoffeeDetails>
-                    <p>{coffee.title}</p>
-                    <AddOrRemoveItemsCart>
-                      <CoffeQuantity
-                        quantity={coffee.quantity}
-                        incrementQuantity={() =>
-                          handleIncreaseCoffeeQuantity(coffee.id)
-                        }
-                        decreaseQuantity={() =>
-                          handleDecreaseCoffeeQuantity(coffee.id)
-                        }
-                      />
-                      <RemoveItemButton
-                        onClick={() => handleRemoveCoffeeCart(coffee.id)}
-                      >
-                        <Trash />
-                        Remover
-                      </RemoveItemButton>
-                    </AddOrRemoveItemsCart>
-                  </CoffeeDetails>
-                </ItemDetails>
-                <p>R${coffee.price.toFixed(2)}</p>
-              </ItemContent>
-              <Separator></Separator>
-            </ItemContainer>
+           <CartList
+            onIncreaseCoffeeQuantity={handleIncreaseCoffeeQuantity}
+            onDecreaseCoffeeQuantity={handleDecreaseCoffeeQuantity}
+            onRemoveCoffee={handleRemoveCoffee}
+            coffee={coffee}
+           />
           );
         })}
         <OrderSummary>
